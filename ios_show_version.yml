@@ -16,6 +16,5 @@
       debug:
         var: output.stdout
 
-    - name: copy output to file
-      copy: content="{{ output }}" dest=./output/{{ inventory_hostname }}.txt
+
 ...
