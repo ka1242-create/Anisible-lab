@@ -10,11 +10,5 @@
       ios_command:
         commands: show version
 
-      register: output
-
-    - name: show output
-      debug:
-        var: output.stdout
-
 
 ...
