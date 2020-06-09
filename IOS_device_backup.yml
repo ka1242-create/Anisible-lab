@@ -10,7 +10,7 @@
      ios_command:
        commands: show run 
 
-  - name: save output to /etc/ansible/Tenfour_EXSI_device_backups 
+- name: save output to /etc/ansible/Tenfour_EXSI_device_backups 
     copy: 
       content: "{{ config.stdout[0] }}"
       dest: "/etc/ansible/Tenfour_EXSI_device_backups/show_run_{{ inventory_hostname }}.txt"
