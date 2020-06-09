@@ -1,0 +1,18 @@
+---
+- name: Playbook Backup configuration cisco IOS
+  connection: network_cli
+  gather_facts: false
+  
+  hosts: all
+
+  tasks:
+   - name: show run 
+   ios_command:
+   commands: show run 
+
+  - name: save output to /etc/ansible/Tenfour_EXSI_device_backups 
+  copy: 
+  content: "{{ config.stdout[0] }}"
+  dest: "/etc/ansible/Tenfour_EXSI_device_backups/show_run_{{ inventory_hostname }}.txt"
+  
+  ...
