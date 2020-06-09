@@ -9,8 +9,10 @@
    - name: show run 
      ios_command:
        commands: show run
+       register: config
    - name: save output to /etc/ansible/Tenfour_ESXI_device_backups 
-     copy: 
+     copy:
+      content: "{{ config.stdout[0] }}"
       dest: "/etc/ansible/Tenfour_ESXI_device_backups/show_run_{{ inventory_hostname }}.txt"
 
 ...
