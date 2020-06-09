@@ -4,12 +4,12 @@
   gather_facts: false
   
   hosts: all
-
+  register: config
+  
   tasks:
    - name: show run 
      ios_command:
        commands: show run
-       register: config
    - name: save output to /etc/ansible/Tenfour_ESXI_device_backups 
      copy: 
       content: "{{ config.stdout[0] }}"
