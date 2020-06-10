@@ -1,0 +1,17 @@
+---
+
+- name: run any "Show" commands on Cisco devices
+  hosts: ios
+  gather_facts: no
+  
+  Hosts: all
+  
+  vars_prompt:
+    - name: command_input
+      prompt: "Enter a "show" command you want to run [don't enter show]"
+
+  tasks:
+    - name: show output of any command entered by the user
+      ios_command:
+        commands:
+              show {{ "command_input }}
