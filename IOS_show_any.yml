@@ -1,5 +1,7 @@
 ---
+
 - name: run any Show commands on Cisco devices
+  connection: network_cli
   gather_facts: false
   
   Hosts: all
