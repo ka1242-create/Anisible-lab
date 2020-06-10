@@ -5,10 +5,6 @@
   gather_facts: false
   
   hosts: all
-  
-  vars_prompt:
-    - name: command_input
-      prompt: "Enter a 'show' command you want to run [dont enter 'show']"
 
   tasks:
     - name: show output of any command entered by the user
