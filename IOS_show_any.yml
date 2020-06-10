@@ -8,10 +8,10 @@
   
   vars_prompt:
     - name: command_input
-      prompt: "Enter a "show" command you want to run [don't enter show]"
+      prompt: "Enter a 'show' command you want to run [don't enter show]"
 
   tasks:
     - name: show output of any command entered by the user
       ios_command:
         commands:
-              show {{ "command_input }}
+              show {{ command_input }}
