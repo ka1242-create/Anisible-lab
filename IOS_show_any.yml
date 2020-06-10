@@ -4,7 +4,7 @@
   connection: network_cli
   gather_facts: false
   
-  Hosts: all
+  hosts: all
   
   vars_prompt:
     - name: command_input
