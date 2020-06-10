@@ -1,7 +1,7 @@
 ---
 - name: Playbook Backup configuration cisco IOS
   connection: network_cli
-  gather_facts: false
+  gather_facts: true
   
   hosts: all
   
