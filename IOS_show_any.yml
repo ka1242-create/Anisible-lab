@@ -1,6 +1,6 @@
 ---
 
-- name: run any "Show" commands on Cisco devices
+- name: run any Show commands on Cisco devices
   hosts: ios
   gather_facts: no
   
