@@ -13,6 +13,6 @@
    - name: save output to /var/lib/awx/projects/Tenfour-lab-devices/configuration_backups 
      copy:
       content: "{{ config.stdout[0] }}"
-      dest: "/var/lib/awx/projects/Tenfour-lab-devices/configuration_backups/show_run_{{ inventory_hostname }}.txt"
+      dest: "/var/lib/awx/projects/Tenfour-lab-devices/configuration_backups/show_run_{{ inventory_hostname }}_{{ansible_date_time.date}}.txt"
 
 ...
