@@ -1,5 +1,5 @@
 ---
-- name: First Network Playbook show version
+- name: Running show version 
   connection: network_cli
   gather_facts: false
 
