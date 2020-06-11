@@ -12,6 +12,5 @@
           - ip helper-address 172.26.3.8
         parents: "{{ item }}"
     
-      with_items: 
-        - interface GigabitEthernet1
+      with_items: interface GigabitEthernet1
 ....
