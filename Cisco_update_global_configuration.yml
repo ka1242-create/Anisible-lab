@@ -1,0 +1,14 @@
+---
+- name: Configuration update on an Interface 
+  connection: network_cli
+  gather_facts: false
+
+  hosts: all
+
+  tasks:
+    - name: configuration commands on cisco device
+      ios_command:
+        commands:
+               {{ Commands_enter }}
+               !
+...
