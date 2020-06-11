@@ -9,5 +9,5 @@
     - name: configuration commands on cisco device
       ios_command:
         commands:
-               {{ Commands_enter }}
+          - "{{ Commands_enter }}"
 ...
