@@ -1,4 +1,5 @@
 ---
+
 - name: Configuration update on an Interface 
   connection: network_cli
   gather_facts: false
@@ -12,4 +13,5 @@
     parents: "{{ item }}"
   with_items:
     - interface GigabitEthernet1
+    
 ....
