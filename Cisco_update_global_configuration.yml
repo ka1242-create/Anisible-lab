@@ -10,5 +10,4 @@
       ios_command:
         commands:
                {{ Commands_enter }}
-               - exit
 ...
