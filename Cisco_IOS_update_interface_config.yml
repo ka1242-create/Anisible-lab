@@ -1,7 +1,7 @@
 ---
 - name: Configuration update on an Interface 
   connection: network_cli
-  gather_facts: false
+  gather_facts: true
 
   hosts: all
 
