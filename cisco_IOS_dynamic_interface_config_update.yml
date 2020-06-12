@@ -17,7 +17,7 @@
         ios_command:
           commands: 'sh run interface {{ item }}'
         with_items: 
-          - GigabitEthernet1
+          - Vlan1
         register: output
       - set_fact: 
           check_helper_add: "{{ output.results }}"
@@ -29,6 +29,6 @@
               - ip helper-address 172.16.0.1
             parents: "interface {{ item }}"
         with_items: 
-          - GigabitEthernet1
+          - Vlan1
         when: '" ip helper-address 172.26.0.1" not in check_helper_add[0].stdout[0]'
 ...
