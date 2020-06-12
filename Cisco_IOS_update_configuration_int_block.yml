@@ -11,9 +11,9 @@
           commands: "sh run interface {{ item }}"
         with_items: 
           - GigabitEthernet1
-        register: check_helper
+        register: output
       - set_fact:
-          check_helper_add: "{{ check_helper.stdout[6] }}"
+          check_helper_add: "{{ output.stdout[6] }}"
           
       - name: configuration commands on cisco device
         ios_config:
