@@ -9,7 +9,7 @@
     - name: check if IP helper is configured 
       ios_command:
         commands: sh run interface "{{ item }}"
-       register: check_helper
+      register: check_helper
       
       - set_fact:
           check_helper_add: "{{ check_helper.stdout[0] }}"
