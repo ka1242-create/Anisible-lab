@@ -10,7 +10,7 @@
         ios_command:
           commands: sh run interface "{{ item }}"
         register: check_helper
-        set_fact:
+      - set_fact:
           check_helper_add: "{{ check_helper.stdout[0] }}"
           
       - name: configuration commands on cisco device
