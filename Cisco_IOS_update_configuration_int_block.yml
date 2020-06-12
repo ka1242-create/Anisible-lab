@@ -22,5 +22,5 @@
             parents: "interface {{ item }}"
         with_items: 
           - GigabitEthernet1
-        when: '" ip helper-address 172.26.0.1" in check_helper_add[0].stdout'
+        when: "check_helper_add[0].stdout.find ('ip helper-address 172.26.0.1') == 1"
 ...
