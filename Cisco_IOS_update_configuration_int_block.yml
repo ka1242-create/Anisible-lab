@@ -12,8 +12,7 @@
         with_items: 
           - GigabitEthernet1
         register: output
-      - set_fact:
-          check_helper_add: "{{ output.stdout[6] }}"
+      - set_fact: check_helper_add: "{{ output.stdout[6] }}"
           
       - name: configuration commands on cisco device
         ios_config:
