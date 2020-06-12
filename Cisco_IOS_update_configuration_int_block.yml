@@ -13,7 +13,7 @@
       set_fact:
           check_helper_add: "{{ check_helper.stdout[0] }}"
           
-     - name: configuration commands on cisco device
+    - name: configuration commands on cisco device
        ios_config:
          parents: interface "{{ item }}"
           line: ip helper-address 172.16.0.1
