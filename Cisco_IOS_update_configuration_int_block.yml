@@ -12,6 +12,6 @@
         match: ip helper-address 172.26.0.1
         replace:
           line: ip helper-address 172.16.0.1
-       with_items: 
+      with_items: 
         - GigabitEthernet1
 ...
