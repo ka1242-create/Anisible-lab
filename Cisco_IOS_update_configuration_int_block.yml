@@ -9,7 +9,8 @@
     - name: configuration commands on cisco device
       ios_config:
         parents: interface "{{ item }}"
-        match: ip helper-address 172.26.0.1
+        match: 
+          line: ip helper-address 172.26.0.1
         replace:
           line: ip helper-address 172.16.0.1
       with_items: 
