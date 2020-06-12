@@ -1,7 +1,7 @@
 ---
 - name: check for existing configuration under an interface and update if not present 
   connection: network_cli
-  gather_facts: true
+  gather_facts: false
 
   hosts: all
 
