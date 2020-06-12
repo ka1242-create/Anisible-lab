@@ -6,13 +6,19 @@
   hosts: all
 
   tasks:
-    - name: configuration commands on cisco device
-      ios_config:
-        parents: interface "{{ item }}"
-        match: 
-          line: ip helper-address 172.26.0.1
-        replace:
+    - name: check if IP helper is configured 
+      ios_command:
+        commands: sh run interface "{{ item }}"
+       register: check_helper
+      
+      - set_fact:
+          check_helper_add: "{{ check_helper.stdout[0] }}"
+          
+     - name: configuration commands on cisco device
+       ios_config:
+         parents: interface "{{ item }}"
           line: ip helper-address 172.16.0.1
-      with_items: 
-        - GigabitEthernet1
+        with_items: 
+         - GigabitEthernet1
+        when: check_helper_add == 'ip helper-address 172.26.0.1'
 ...
