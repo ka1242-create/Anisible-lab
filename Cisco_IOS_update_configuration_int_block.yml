@@ -8,7 +8,7 @@
   tasks:
       - name: check if IP helper is configured 
         ios_command:
-          commands: sh run interface "{{ item }}"
+          commands: "sh run interface {{ item }}"
         with_items: 
           - GigabitEthernet1
         register: check_helper
@@ -19,7 +19,7 @@
         ios_config:
             line: 
               - ip helper-address 172.16.0.1
-            parents: interface "{{ item }}"
+            parents: "interface {{ item }}"
         with_items: 
           - GigabitEthernet1
         when: check_helper_add == 'ip helper-address 172.26.0.1'
