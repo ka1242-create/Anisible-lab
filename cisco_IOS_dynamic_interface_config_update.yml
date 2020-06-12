@@ -11,7 +11,11 @@
           commands: 'sh ip int br | i Vlan'
         register: output_vlans
       - set_fact: 
-          output_vlans: "{{ output.stdout[0] }}"
+          interface_template: "/var/lib/awx/projects/Tenfour-lab-devices/templates/cisco_ios_showipintbr.textfsm"
+      - set_fact:
+          interface_data: "{{ command_output.stdout[0] | parse_cli_textfsm(interface_template) }}"
+      - set_fact:
+          interface_value: interface_data.INTF[0]
           
       - name: check if IP helper is configured 
         ios_command:
