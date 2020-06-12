@@ -1,7 +1,7 @@
 ---
 - name: check for existing configuration under an interface and update if not present 
   connection: network_cli
-  gather_facts: false
+  gather_facts: true
 
   hosts: all
 
@@ -10,8 +10,7 @@
       ios_command:
         commands: sh run interface "{{ item }}"
       register: check_helper
-      
-     - set_fact:
+      - set_fact:
           check_helper_add: "{{ check_helper.stdout[0] }}"
           
      - name: configuration commands on cisco device
