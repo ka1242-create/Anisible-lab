@@ -22,5 +22,5 @@
             parents: "interface {{ item }}"
         with_items: 
           - GigabitEthernet1
-        when: '"GigabitEthernet11" in check_helper_add'
+        when: '"GigabitEthernet1" in check_helper_add'
 ...
