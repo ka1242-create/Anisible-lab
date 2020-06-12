@@ -8,12 +8,12 @@
   tasks:
       - name: check if IP helper is configured 
         ios_command:
-          commands: "sh run interface {{ item }}"
+          commands: 'sh run interface {{ item }}'
         with_items: 
           - GigabitEthernet1
         register: output
       - set_fact:
-          check_helper_add: "{{ output.stdout_lines[6] }}"
+          check_helper_add: "{{ output.stdout[6] }}"
           
       - name: configuration commands on cisco device
         ios_config:
