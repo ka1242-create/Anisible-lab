@@ -17,7 +17,7 @@
         register: output
         when: 'item.key is regex("Vlan.*")'
       - set_fact: 
-          check_helper_add: "{{ output.results }}"
+          get_interface_config: "{{ output.results }}"
           
       - name: configuration commands on cisco device
         ios_config:
@@ -27,7 +27,7 @@
         with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
         when: 
           - 'item.key is regex("Vlan.*")'
-          - '"{{ config_to_be_checked }}" in check_helper_add[0].stdout[0]'
+          - '"{{ config_to_be_checked }}" in get_interface_config[0].stdout[0]'
 
         
 ...
