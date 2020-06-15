@@ -12,7 +12,7 @@
         
       - name: check if IP helper is configured 
         ios_command:
-          commands: 'sh run interface {{ item }}'
+          commands: 'sh run interface {{ item.key }}'
         with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
         register: output
       - set_fact: 
@@ -23,7 +23,7 @@
             lines: 
               - ip helper-address 172.26.0.1
               - ip helper-address 172.16.0.1
-            parents: "interface {{ item }}"
+            parents: "interface {{ item.key }}"
         with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
         when: '" ip helper-address 172.26.0.1" not in check_helper_add[0].stdout[0]'
 ...
