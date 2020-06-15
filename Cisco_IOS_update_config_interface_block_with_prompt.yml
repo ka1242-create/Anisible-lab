@@ -15,7 +15,7 @@
           commands: 'sh run interface {{ item.key }}'
         with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
         register: output
-        when: '"vlan" or "Vlan" in item.key'
+        when: 'item.key is 'regex("Vlan.*")'
       - set_fact: 
           check_helper_add: "{{ output.results }}"
           
