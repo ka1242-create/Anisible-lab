@@ -22,12 +22,12 @@
       - name: configuration commands on cisco device
         ios_config:
             lines: 
-              - {{ "provided_config_line" }}
+              - "{{ provided_config_line }}"
             parents: "interface {{ item.key }}"
         with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
         when: 
           - '"vlan" or "Vlan" in item.key'
-          - '{{ "config_to_be_checked" }} in check_helper_add[0].stdout[0]'
+          - '"{{ config_to_be_checked }}" in check_helper_add[0].stdout[0]'
 
         
 ...
