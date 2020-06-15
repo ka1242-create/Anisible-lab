@@ -7,21 +7,13 @@
 
   tasks:
       - name: get all configured VLANS 
-        ios_command:
-          commands: 'sh ip int br | i Vlan'
-        register: output_vlans
-      - set_fact: 
-          interface_template: "/var/lib/awx/projects/Tenfour-lab-devices/templates/cisco_ios_showipintbr.textfsm"
-      - set_fact:
-          interface_data: "{{ command_output.stdout[0] | parse_cli_textfsm(interface_template) }}"
-      - set_fact:
-          interface_value: interface_data.INTF[0]
-          
+        ios_facts:
+        register: output_interfaces
+        
       - name: check if IP helper is configured 
         ios_command:
           commands: 'sh run interface {{ item }}'
-        with_items: 
-          - Vlan1
+        with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
         register: output
       - set_fact: 
           check_helper_add: "{{ output.results }}"
@@ -32,7 +24,6 @@
               - ip helper-address 172.26.0.1
               - ip helper-address 172.16.0.1
             parents: "interface {{ item }}"
-        with_items: 
-          - Vlan1
+        with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
         when: '" ip helper-address 172.26.0.1" not in check_helper_add[0].stdout[0]'
 ...
