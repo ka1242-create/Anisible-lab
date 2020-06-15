@@ -26,7 +26,7 @@
             parents: "interface {{ item.key }}"
         with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
         when: 
-          - 'vlan or Vlan in item.key' 
+          - 'vlan' or 'Vlan' in item.key 
           - '"{{ config_to_be_checked }}" in check_helper_add[0].stdout[0]'
 
         
