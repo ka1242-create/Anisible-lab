@@ -25,5 +25,5 @@
               - ip helper-address 172.16.0.1
             parents: "interface {{ item.key }}"
         with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
-        when: '" ip helper-address 172.26.0.1" not in check_helper_add[0].stdout[0]'
+        when: '" ip helper-address 172.26.0.1" in check_helper_add[0].stdout[0]'
 ...
