@@ -16,7 +16,7 @@
         with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
         register: output
       - set_fact: 
-          check_helper_add: "{{ output_interfaces.results }}"
+          check_helper_add: "{{ output.results }}"
           
       - name: configuration commands on cisco device
         ios_config:
