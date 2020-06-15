@@ -27,7 +27,7 @@
         with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
         when: 
           - 'item.key is regex("Vlan.*")'
-          - '{{ config_to_be_checked }}" in get_interface_config[0].stdout[0]'
+          - '"{{ config_to_be_checked }}" in get_interface_config[0].stdout[0]'
 
         
 ...
