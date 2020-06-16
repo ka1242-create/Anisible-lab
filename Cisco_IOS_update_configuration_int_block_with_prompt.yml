@@ -1,5 +1,5 @@
 ---
-- name: check for existing configuration under an interface and update if not present 
+- name: check for existing configuration under an interface and update if present 
   connection: network_cli
   gather_facts: false
 
@@ -9,14 +9,14 @@
       - name: get IOS facts 
         ios_facts:
         register: device_ios_facts
-      - name: check if IP helper is configured 
+      - name: Get running configuration from all interfaces 
         ios_command:
           commands: 'sh run interface {{ item.key }}'
         with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
         register: interface_running_output
       - set_fact: 
           check_config_arg: "{{ interface_running_output.results }}"
-      - name: configuration commands on cisco device
+      - name: Deploy configuration commands on cisco device if command is present
         ios_config:
           lines: 
               - "{{ config_to_add }}"
