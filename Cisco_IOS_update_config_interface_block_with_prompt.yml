@@ -26,7 +26,7 @@
             parents: "interface {{ item.key }}"
         with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
         when: 
-          - 'item.key.description == config_to_be_checked'
+          - 'item.value["description"] == config_to_be_checked'
 
         
 ...
