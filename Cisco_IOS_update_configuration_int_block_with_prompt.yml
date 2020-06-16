@@ -23,5 +23,5 @@
           parents: "interface {{ item.key }}"
         loop: "{{ check_config_arg }}"
         when: 
-          - 'config_to_check in check_config_arg.stdout[0]'
+          - 'config_to_check in check_config_arg[0].stdout[0]'
 ...
