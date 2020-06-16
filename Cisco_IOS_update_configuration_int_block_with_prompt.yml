@@ -19,7 +19,7 @@
       - name: configuration commands on cisco device
         ios_config:
           lines: 
-              - "{{ Config_to_add }}"
+              - "{{ config_to_add }}"
           parents: "interface {{ item.key }}"
         with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
         when: 'config_to_check not in check_config_arg[0].stdout[0]'
