@@ -26,7 +26,8 @@
             parents: "interface {{ item.key }}"
         with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
         when: 
-          - 'config_to_be_checked in get_interface_config[0].stdout[0]'
+          - 'item.key is regex("Vlan.*")'
+          - 'config_to_be_checked in item.value'
 
         
 ...
