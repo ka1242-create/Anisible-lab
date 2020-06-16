@@ -14,7 +14,6 @@
           commands: 'sh run interface {{ item.key }}'
         with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
         register: interface_running_output
-          
         - name: configuration commands on cisco device
           ios_config:
              lines: 
