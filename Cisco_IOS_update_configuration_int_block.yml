@@ -6,22 +6,21 @@
   hosts: all
 
   tasks:
+      - name: get IOS facts 
+        ios_facts:
+        register: device_ios_facts
       - name: check if IP helper is configured 
         ios_command:
-          commands: 'sh run interface {{ item }}'
-        with_items: 
-          - GigabitEthernet1
-        register: output
-      - set_fact: 
-          check_helper_add: "{{ output.results }}"
+          commands: 'sh run interface {{ item.key }}'
+        with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
+        register: interface_running_output
           
-      - name: configuration commands on cisco device
-        ios_config:
-            lines: 
+        - name: configuration commands on cisco device
+          ios_config:
+             lines: 
               - ip helper-address 172.26.0.1
               - ip helper-address 172.16.0.1
-            parents: "interface {{ item }}"
-        with_items: 
-          - GigabitEthernet1
-        when: '" ip helper-address 172.26.0.1" not in check_helper_add[0].stdout[0]'
+              parents: "interface {{ item }}"
+          with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
+            when: '" ip helper-address 172.26.0.1" not in interface_running_output.stdout'
 ...
