@@ -8,26 +8,26 @@
   tasks:
       - name: get IOS facts 
         ios_facts:
-        register: output_interfaces
+        register: device_ios_facts
         
       - name: Check if the provided configuration is present 
         ios_command:
           commands: 'sh run interface {{ item.key }}'
-        with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
-        register: output
+        with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
+        register: show_run_int_output
         when: 'item.key is regex("Vlan.*")'
       - set_fact: 
-          get_interface_config: "{{ output.results }}"
+          get_interface_config: "{{ show_run_int_output.results }}"
           
       - name: configuration commands on cisco device
         ios_config:
             lines: 
               - "{{ provided_config_line }}"
             parents: "interface {{ item.key }}"
-        with_dict: "{{ output_interfaces.ansible_facts.ansible_net_interfaces }}"
+        with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
         when: 
           - 'item.key is regex("Vlan.*")'
-          - 'config_to_be_checked in get_interface_config[0].stdout[0]'
+          - 'regex(".*config_to_be_checked.*") in get_interface_config[0].stdout[0]'
 
         
 ...
