@@ -21,7 +21,7 @@
           lines: 
               - "{{ config_to_add }}"
           parents: "interface {{ item.key }}"
-        with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
+        loop: "{{ check_config_arg }}"
         when: 
-          - 'config_to_check in check_config_arg.stdout'
+          - 'config_to_check in stdout[0]'
 ...
