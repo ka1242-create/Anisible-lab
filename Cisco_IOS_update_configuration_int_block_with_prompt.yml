@@ -22,5 +22,7 @@
               - "{{ config_to_add }}"
           parents: "interface {{ item.key }}"
         with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
-        when: 'config_to_check in check_config_arg[0].stdout[0]'
+        when: 
+          - 'item.key in check_config_arg[0].stdout[0]'
+          - 'config_to_check in check_config_arg[0].stdout[0]'
 ...
