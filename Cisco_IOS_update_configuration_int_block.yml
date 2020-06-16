@@ -14,6 +14,8 @@
           commands: 'sh run interface {{ item.key }}'
         with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
         register: interface_running_output
+      - set_fact: 
+          check_config_arg: "{{ interface_running_output.results }}"
       - name: configuration commands on cisco device
         ios_config:
           lines: 
@@ -21,5 +23,5 @@
               - ip helper-address 172.16.0.1
           parents: "interface {{ item }}"
         with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
-        when: '"ip helper-address 172.26.0.1" not in interface_running_output[0].stdout[0]'
+        when: '"ip helper-address 172.26.0.1" not in check_config_arg[0].stdout[0]'
 ...
