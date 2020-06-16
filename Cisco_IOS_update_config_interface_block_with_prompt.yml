@@ -27,7 +27,7 @@
         with_dict: "{{ device_ios_facts.ansible_facts.ansible_net_interfaces }}"
         when: 
           - 'item.key is regex("Vlan.*")'
-          - 'config_to_be_checked in item.value'
+          - 'item.value is regex("config_to_be_checked.*")'
 
         
 ...
