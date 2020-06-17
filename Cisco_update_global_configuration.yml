@@ -10,5 +10,5 @@
       ios_config:
         lines:
           - "{{ item }}"
-      loop: "{{ lookup(Commands_enter, wantlist=True) }}"
+      loop: "{{ lookup(Commands_enter, 'all', wantlist=True) }}"
 ...
