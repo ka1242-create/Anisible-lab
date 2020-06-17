@@ -10,6 +10,7 @@
     - name: show output of any command entered by the user
       ios_command:
         commands:
-              show {{ command_input }}
+              show {{ item }}
+      with_items: "{{ command_input }}"
 
 ...
