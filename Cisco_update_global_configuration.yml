@@ -10,4 +10,5 @@
       ios_command:
         commands:
           - "{{ Commands_enter }}"
+        wait_for: "\n"
 ...
