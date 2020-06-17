@@ -7,8 +7,8 @@
 
   tasks:
     - name: configuration commands on cisco device
-      ios_command:
-        commands:
+      ios_config:
+        multiline_delimiter: "\n"
+        lines:
           - "{{ Commands_enter }}"
-        wait_for: "\n"
 ...
