@@ -11,6 +11,6 @@
       ios_command:
         commands:
              - show {{ item }}
-      with_items: "{{ command_input }}"
+      with_items: "{{ command_input.split('\n') }}"
 
 ...
