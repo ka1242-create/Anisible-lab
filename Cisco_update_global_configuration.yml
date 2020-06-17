@@ -11,5 +11,5 @@
         lines:
           - "{{ item }}"
         multiline_delimiter: "\n"
-      with_items: "{{ Commands_enter }}"
+      with_items: "{{ lookup(Commands_enter, wantlist=True) }}"
 ...
