@@ -10,5 +10,6 @@
       ios_config:
         lines:
           - "{{ item }}"
-      with_items: "{{ Commands_enter, wantlist=True }}"
+        multiline_delimiter: "\n"
+      with_items: "{{ Commands_enter }}"
 ...
