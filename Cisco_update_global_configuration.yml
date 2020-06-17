@@ -10,6 +10,5 @@
       ios_config:
         lines:
           - "{{ item }}"
-      multiline_delimiter: "\n"
-      loop: "{{ lookup(Commands_enter, 'all', wantlist=True) }}"
+      with_items: "{{ Commands_enter }}"
 ...
