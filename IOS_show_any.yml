@@ -9,9 +9,8 @@
   tasks:
     - name: show output of any command entered by the user
       ios_command:
-        multiline_delimiter: "\n"
         commands:
-              show {{ item }}
+             - show {{ item }}
       with_items: "{{ command_input }}"
 
 ...
