@@ -14,6 +14,6 @@
              - show run
           wait_for:
             - result[0] contains "{{ item }}"    
-        loop: "{{ provided_config_line[0] }}"
+        with_items: "{{ provided_config_line }}"
         
 ...
