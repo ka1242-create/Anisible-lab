@@ -1,0 +1,21 @@
+---
+#SNMP Cconfiguration check - compliance policy file- contributed by KA
+
+- name: Check if the device satisfies SNMP compliance requirements
+  connection: network_cli
+  gather_facts: false
+
+  hosts: all
+
+  tasks:
+      - name: show output of any command entered by the user
+        ios_command:
+          commands:
+             - show run
+          register: running-config
+      - name: Greet the world if /tmp/my.conf contains "127.0.0.1"
+        debug: msg="{{ item }}"
+        when: running-config.rc == 0
+        loop: provided_config_line
+        
+...
