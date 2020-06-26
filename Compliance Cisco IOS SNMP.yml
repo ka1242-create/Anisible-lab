@@ -1,5 +1,5 @@
 ---
-#SNMP Cconfiguration check - compliance policy file- contributed by KA
+#Configuration check - compliance policy file- contributed by KA
 
 - name: Check if the device satisfies SNMP compliance requirements
   connection: network_cli
@@ -22,8 +22,7 @@
         when: '"{{ item }}" in  check_config'
         with_items: "{{ provided_config_line }}"
         debug:
-            msg: "one or more configuration lines aren't present. The device is not complaint!"
-            type: warning
+            msg: "one or more configuration lines aren't present for host {{ inventory_hostname }}. The device is not complaint!"
         when: '"{{ item }}" not in  check_config'
         with_items: "{{ provided_config_line }}"
         
