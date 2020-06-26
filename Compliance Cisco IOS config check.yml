@@ -15,7 +15,7 @@
       - set_fact: 
           check_config: "{{ device_running_config.stdout[0] }}"
       
-     - name: Reports COMPLIANT if the line exists in the running configuration else Skip 
+      - name: Reports COMPLIANT if the line exists in the running configuration else Skip 
         debug:
             msg: "Configuration line is present. {{ inventory_hostname }} is COMPLIANT!"
         when: 'item in check_config'
