@@ -14,7 +14,7 @@
              - show run
         register: device_running_config
       - set_fact: 
-          check_config: "{{ device_running_config.stdout }}"
+          check_config: "{{ device_running_config.stdout[0] }}"
       
       - name: check if user provided lines are present
         debug:
