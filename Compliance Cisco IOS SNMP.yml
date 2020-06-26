@@ -24,6 +24,6 @@
         debug:
             msg: "One or more configuration lines aren't present. {{ inventory_hostname }} is not complaint!"
         when: 'item not in check_config'
-        with_items: "{{ provided_config_line }}"
+        with_items: "{{ provided_config_line.split('\n') }}"
         
 ...
