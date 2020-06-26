@@ -18,7 +18,7 @@
       
       - name: check if user provided lines are present
         debug:
-            msg: 'Configuration lines are present. "{{ inventory_hostname }}" is complaint!
+            msg: "Configuration lines are present. {{ inventory_hostname }} is complaint!"
         when: 'item in check_config'
         with_items: "{{ provided_config_line.split('\n') }}"
         debug:
