@@ -16,11 +16,14 @@
       - set_fact: 
           check_config: "{{ device_running_config.stdout[0] }}"
       
-      - debug:
-            msg: "Configuration line is present. {{ inventory_hostname }} is complaint!"
+      - name: Report COMPLIANT if the line exists in the running configuration else Skip 
+        debug:
+            msg: "Configuration line is present. {{ inventory_hostname }} is COMPLIANT!"
         when: 'item in check_config'
         with_items: "{{ provided_config_line.split('\n') }}"
-      - debug:
+        
+      - name: Report NOT COMPLIANT if the line doesn't exist in the running configuration else Skip 
+        debug:
             msg: "CONFIGURATION LINE IS NOT PRESENT. {{ inventory_hostname }} IS NOT COMPLIANT!"
         when: 'item not in check_config'
         with_items: "{{ provided_config_line.split('\n') }}"
