@@ -23,6 +23,7 @@
         with_items: "{{ provided_config_line }}"
         debug:
             msg: "one or more configuration lines aren't present. The device is not complaint!"
+            type: warning
         when: '"{{ item }}" not in  check_config'
         with_items: "{{ provided_config_line }}"
         
