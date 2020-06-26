@@ -18,6 +18,7 @@
       - name: Reports COMPLIANT if the line exists in the running configuration else Skip 
         debug:
             msg: "Configuration line is present. {{ inventory_hostname }} is COMPLIANT!"
-        loop: "{% if item in check_config %}{{ provided_config_line.split('\n') }}{% else %}[]{% endif %}" 
+        loop: "{% if item in check_config %}{{ item }}{% else %}[]{% endif %}" 
+        with_items: "{{ provided_config_line.split('\n') }}
 
 ...
