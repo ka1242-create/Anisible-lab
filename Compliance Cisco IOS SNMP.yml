@@ -20,6 +20,7 @@
         debug:
         when: 'item in check_config'
             msg: "Configuration lines are present. {{ inventory_hostname }} is complaint!"
+        with_items: "{{ provided_config_line.split('\n') }}"
         when: 'item not in check_config'
             msg: "One or more configuration lines aren't present. {{ inventory_hostname }} is not complaint!"
         with_items: "{{ provided_config_line.split('\n') }}"
