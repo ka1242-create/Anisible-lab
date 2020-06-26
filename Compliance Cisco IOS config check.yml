@@ -19,6 +19,6 @@
         debug:
             msg: "Configuration line is present. {{ inventory_hostname }} is COMPLIANT!"
         loop: "{% if item in check_config %}{{ item }}{% else %}[]{% endif %}" 
-        with_items: "{{ provided_config_line.split('\n') }}
+        with_items: "{{ provided_config_line.split('\n') }}"
 
 ...
