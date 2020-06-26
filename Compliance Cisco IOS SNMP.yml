@@ -18,11 +18,11 @@
       
       - name: check if user provided lines are present
         debug:
-            msg: "Yes, configuration lines are present. The device is complaint!"
+            msg: "Yes, configuration lines are present. {{ inventory_hostname }} is complaint!"
         when: '"{{ item }}" in  check_config'
         with_items: "{{ provided_config_line }}"
         debug:
-            msg: "one or more configuration lines aren't present for host {{ inventory_hostname }}. The device is not complaint!"
+            msg: "one or more configuration lines aren't present. {{ inventory_hostname }} is not complaint!"
         when: '"{{ item }}" not in  check_config'
         with_items: "{{ provided_config_line }}"
         
