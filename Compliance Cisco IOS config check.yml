@@ -4,7 +4,7 @@
 - name: Check if the device satisfies compliance requirements
   connection: network_cli
   gather_facts: false
-
+  ansible_display_skipped_hosts: false
   hosts: all
 
   tasks:
