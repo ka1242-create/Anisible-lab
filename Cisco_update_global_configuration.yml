@@ -11,7 +11,5 @@
         multiline_delimiter: "\n"
         lines:
           - "{{ Commands_enter }}"
-      register: output
-    - debug:
-        msg: "{{ output }}" 
+ 
 ...
