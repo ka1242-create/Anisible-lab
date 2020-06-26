@@ -13,5 +13,5 @@
           - "{{ Commands_enter }}"
       register: output
     - debug:
-        msg: "output.stdout" 
+        msg: "{{ output.stdout[0] }}" 
 ...
