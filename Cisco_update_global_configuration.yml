@@ -1,4 +1,5 @@
 ---
+#Bulk configuration deploymenton a cisco IOS device - contributed by KA
 - name: configure cisco devices 
   connection: network_cli
   gather_facts: false
