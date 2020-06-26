@@ -17,9 +17,9 @@
           check_config: "{{ device_running_config.stdout }}"
       
       - name: check if user provided lines are present
-      - debug:
-          msg: "Yes the device is complaint with SNMP Policy"
-        when: '"{{ item }}" in  check_config'
-        with_items: "{{ provided_config_line }}"
+        - debug:
+            msg: "Yes the device is complaint with SNMP Policy"
+          when: '"{{ item }}" in  check_config'
+          with_items: "{{ provided_config_line }}"
         
 ...
