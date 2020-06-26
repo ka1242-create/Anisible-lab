@@ -13,7 +13,7 @@
           commands:
              - show run
           wait_for:
-            - result[0].stdout contains "{{ item }}"    
+            - results contains "{{ item }}"    
         with_items: "{{ provided_config_line }}"
         
 ...
