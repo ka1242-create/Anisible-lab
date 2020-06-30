@@ -6,7 +6,6 @@
 
 - name: Check if the device satisfies compliance requirements
   connection: network_cli
-  display_skipped_hosts: no
   gather_facts: false
   hosts: all
 
