@@ -1,4 +1,8 @@
 ---
+# Configuration check - compliance policy file - contributed by KA
+# takes user input for what command to be run and then adds that to the "show" statement in script
+# Here we have the "show" keyword preconfigured in the script, so we can only give access to this job to the Tier 1 team.
+# Multiple commands output can be run via this, but are displayed in separate lines.
 
 - name: run any Show commands on Cisco devices
   connection: network_cli
