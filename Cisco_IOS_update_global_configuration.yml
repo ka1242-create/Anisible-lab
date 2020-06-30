@@ -1,5 +1,7 @@
 ---
-#Bulk configuration deploymenton a cisco IOS device - contributed by KA
+# Bulk configuration update on cisco devices - contributed by KA
+# Multiple configuration lines can be entered.
+
 - name: configure cisco devices 
   connection: network_cli
   gather_facts: false
