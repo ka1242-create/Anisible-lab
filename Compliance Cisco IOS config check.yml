@@ -1,8 +1,10 @@
 ---
-# Configuration check - compliance policy file- contributed by KA
-# Here the check is agains the "show run" output from the device and as long as the line is present in the config this script will report the device to be complaint 
-# and hence may not accurately present deterministic results for those querries. Therefore, in such cases you can try to restrict the area by using the pipe (|) sign in show run input
-# example input "show run interface g0/0/0" when you only want to look inside this interface or "sh run | sec class" when looking for QOS related configuration
+# Configuration check - compliance policy file - contributed by KA
+# this playbook by default checks is against the "show run" output from the device and as long as the line is present in the config, this script will report the device to be complaint 
+# and hence may not accurately present deterministic results for block check querries. As one line from the block is present at one place and second line at another place(specially when checking interface config). Therefore, in such cases you can try to restrict the area by using the pipe (|) sign in show run input
+# Therefore, for example, use input "show run interface g0/0/0" when you only want to look inside this interface or "sh run | sec class" when looking for QOS related configuration
+# reports compliance for each line
+
 
 - name: Check if the device satisfies compliance requirements
   connection: network_cli
