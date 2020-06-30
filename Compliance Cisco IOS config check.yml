@@ -1,7 +1,8 @@
 ---
 # Configuration check - compliance policy file- contributed by KA
 # Here the check is agains the "show run" output from the device and as long as the line is present in the config this script will report the device to be complaint 
-# and hence may not accurately present deterministic results for those querries.
+# and hence may not accurately present deterministic results for those querries. Therefore, in such cases you can try to restrict the area by using the pipe (|) sign in show run input
+# example input "show run interface g0/0/0" when you only want to look inside this interface or "sh run | sec class" when looking for QOS related configuration
 
 - name: Check if the device satisfies compliance requirements
   connection: network_cli
@@ -13,7 +14,7 @@
       - name: show output of any command entered by the user
         ios_command:
           commands:
-             - show run
+             - "{{ command_input }}"
         register: device_running_config
       - set_fact: 
           check_config: "{{ device_running_config.stdout[0] }}"
